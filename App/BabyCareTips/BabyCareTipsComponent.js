@@ -37,6 +37,9 @@ class BabyCareTipsComponent extends Component {
         console.log(this.props.babyCareTips)
         return(
         <View style={styles.container}>
+            <View style={{alignItems: 'center'}}>
+                        <Text style={styles.titleTextStyle}>Baby Care Tips</Text>
+            </View>
             <FlatList
             data={this.props.babyCareTips}
             renderItem={({item}) => 
@@ -81,7 +84,15 @@ const styles = StyleSheet.create({
             marginTop:20,
             flexDirection:'row',
             alignItems: 'center',
-       }
+       },
+       titleTextStyle:{
+            fontStyle:'italic',
+            fontFamily: 'Cochin',
+            color: '#3e4444',
+            fontWeight: 'bold',
+            fontSize: 20,
+            padding:20,
+        },
 });
 
 

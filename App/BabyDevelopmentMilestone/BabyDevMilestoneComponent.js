@@ -54,6 +54,9 @@ class BabyDevMilestoneComponent extends Component {
         const babyMileStone = this.props.babyMileStone
         return(
                 <View style={styles.container}>
+                    <View style={{alignItems: 'center'}}>
+                        <Text style={styles.titleTextStyle}>Development milestones</Text>
+                    </View>
                     <FlatList
                     data={babyMileStone.bdms}
                     keyExtractor={this._keyExtractor}
@@ -78,7 +81,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         
        },
-       item: {
+    item: {
         fontStyle:'italic',
         fontFamily: 'Cochin',
         backgroundColor:'#f0f0f0',
@@ -97,6 +100,14 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         elevation: 2,
        },
+    titleTextStyle:{
+        fontStyle:'italic',
+        fontFamily: 'Cochin',
+        color: '#3e4444',
+        fontWeight: 'bold',
+        fontSize: 20,
+        padding:20,
+    },
 });
 
 export default BabyDevMilestoneComponent;

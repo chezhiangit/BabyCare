@@ -21,7 +21,8 @@ export const handleListSelection = (item) => {
             Actions.bcaretips({title:'Baby Care Tips'});
             return ({type:'LOAD_BABYCARETIPS'})
         case "HWC":
-            return ({type:'NO_ACTION'})
+            Actions.heightWeight({title:'Height-Weight'});
+            return ({type:'LOAD_HEIGHTWEIGHT'})
         default:
             return ({type:'NO_ACTION'})
     }

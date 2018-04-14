@@ -1,4 +1,4 @@
-const DEFAULT_STATE = {bdms:[],bdmsDesc:[{}]}
+const DEFAULT_STATE = {}
 
 const bdms = [
             '1 month old',
