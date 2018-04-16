@@ -17,19 +17,23 @@ class HomeComponent extends Component {
     }
 
     onListItemSelected(item){
-        this.props.handleListSelection(item)
-
-        // Alert.alert(
-        //         'Alert',
-        //         'List item selected.',
-        //         [
-        //           {text: 'Continue', onPress: () => {
-        //               this.props.handleListSelection()
-        //           }},
-        //           {text: 'Discard', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        //         ],
-        //         { cancelable: false }
-        //       )
+        switch(item.id){
+            
+            case "DM":
+                this.props.loadBabyMileStone();
+                break;
+            case "BCT":
+                this.props.loadBabyCareTips();
+                break;
+            case "HWC":
+                this.props.loadHeightWeight();
+                break;
+            case "DR":
+            case "BR":
+            case "VR":
+            default:
+                return;
+        }
 
     }
     render(){
