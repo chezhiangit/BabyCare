@@ -1,35 +1,5 @@
-import {Actions} from 'react-native-router-flux'
-
-//const bct = require('../Data/babyCareTips.json')
-
-import * as BabyCareModel from '../Data/responseData'
-
-export default getHomeData = ()=>{
-    return ({type:'LOAD_HOME'})
-}
-export const handleListSelection = (item) => {
-
-    switch(item.id){
-        case "DR":
-        case "BR":
-        case "VR":
-            return ({type:'NO_ACTION'})
-        case "DM":
-            Actions.bdms({title:'Dev Milestone'});
-            return ({type:'LOAD_BABYMSTONE'})
-        case "BCT":
-            Actions.bcaretips({title:'Baby Care Tips'});
-            return ({type:'LOAD_BABYCARETIPS'})
-        case "HWC":
-            Actions.heightWeight({title:'Height-Weight'});
-            return ({type:'LOAD_HEIGHTWEIGHT'})
-        default:
-            return ({type:'NO_ACTION'})
-    }
-   /* */
-
-    
-}
+import {Actions} from 'react-native-router-flux';
+import * as BabyCareModel from '../Data/responseData';
 
 export function loadBabyMileStone() {
     return (dispatch) =>{
