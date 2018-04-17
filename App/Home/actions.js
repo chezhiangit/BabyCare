@@ -25,3 +25,11 @@ export function loadHeightWeight() {
     }
 }
 
+export function loadVaccination(){
+    return (dispatch) =>{
+        let data = BabyCareModel.getVaccinationData();
+        Actions.vaccine({title:'Vaccination'})
+        dispatch({type:'LOAD_VACCINATION',data})
+    }
+}
+

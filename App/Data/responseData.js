@@ -463,3 +463,403 @@ export function getHeightWeightData() {
         girls
     });
 }
+
+
+let vaccination = {
+    birth:{
+        key:'birth',
+        title:'Birth',
+    	v1:{
+            key:'birth-v1',
+            status:0,
+            name:'Bacillus Calmette–Guérin (BCG)',
+            dosage:'1st',
+            dueOn:'due on date',
+            givenOn:'given on date',
+        },
+        v2:{
+            key:'birth-v2',
+            status:0,
+            name:'Oral polio vaccine (OPV 0)',
+            dosage:'1st',
+            dueOn:'due on date',
+            givenOn:'given on date',
+        },
+        v3:{
+            key:'birth-v3',
+            status:0,
+            name:'Hepatitis B (Hep – B1)',
+            dosage:'1st',
+            dueOn:'due on date',
+            givenOn:'given on date',
+        }
+
+    },
+    week6:{
+        key:'weeks6',
+        title:'6 Weeks',
+    	v1:{
+            key:'weeks6-v1',
+            status:0,
+        	name:'Diptheria, Tetanus and Pertussis vaccine (DTwP 1)',
+            dueOn:'due on date',
+            dosage:'1st',
+            givenOn:'given on date',
+        },
+        v2:{
+            key:'weeks6-v2',
+            status:0,
+        	name:'Inactivated polio vaccine (IPV 1)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+        v3:{
+            key:'weeks6-v3',
+            status:0,
+        	name:'Hepatitis B  (Hep – B2)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'2nd',
+        },
+        v4:{
+            key:'weeks6-v4',
+            status:0,
+        	name:'Haemophilus influenzae type B (Hib 1)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+        v5:{
+            key:'weeks6-v5',
+            status:0,
+        	name:'Rotavirus',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+        v6:{
+            key:'weeks6-v6',
+            status:0,
+        	name:'Pneumococcal conjugate vaccine (PCV)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+
+    },
+    weeks10:{
+        key:'weeks10',
+        title:'10 Weeks',
+        v1:{
+            key:'weeks10-v1',
+            status:0,
+            name:'Diptheria, Tetanus and Pertussis vaccine (DTwP)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'2nd',
+        },
+        v2:{
+            key:'weeks10-v2',
+            status:0,
+            name:'Inactivated polio vaccine (IPV)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'2nd',
+        },
+        v3:{
+            key:'weeks10-v3',
+            status:0,
+            name:'Haemophilus influenzae type B (Hib)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'2nd',
+        },
+        v4:{
+            key:'weeks10-v4',
+            status:0,
+            name:'Rotavirus',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'2nd',
+        },
+        v5:{
+            key:'weeks10-v5',
+            status:0,
+            name:'Pneumococcal conjugate vaccine (PCV)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'2nd',
+        },
+    },
+    weeks14:{
+        key:'weeks14',
+        title:'14 Weeks',
+        v1:{
+            key:'weeks14-v1',
+            status:0,
+            name:'Diptheria, Tetanus and Pertussis vaccine (DTwP)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'3rd',
+        },
+        v2:{
+            key:'weeks14-v2',
+            status:0,
+            name:'Inactivated polio vaccine (IPV)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'3rd',
+        },
+        v3:{
+            key:'weeks14-v3',
+            status:0,
+            name:'Haemophilus influenzae type B (Hib)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'3rd',
+        },
+        v4:{
+            key:'weeks14-v4',
+            status:0,
+            name:'Rotavirus',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'3rd',
+        },
+        v5:{
+            key:'weeks14-v5',
+            status:0,
+            name:'Pneumococcal conjugate vaccine (PCV)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'3rd',
+        },
+    },
+    months6:{
+        key:'months6',
+        title:'6 Months',
+        v1:{
+            key:'months6-v1',
+            status:0,
+            name:'Oral polio vaccine (OPV 1)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'2nd',
+        },
+        v2:{
+            key:'months6-v2',
+            status:0,
+            name:'Hepatitis B (Hep – B)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'3rd',
+        }
+    },
+    months9:{
+        key:'months9',
+        title:'9 Months',
+        v1:{
+            key:'months9-v1',
+            status:0,
+            name:'Oral polio vaccine (OPV 2)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'3rd',
+        },
+        v2:{
+            key:'months9-v2',
+            status:0,
+            name:'Measles, Mumps, and Rubella (MMR)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+    },
+    months9To12:{
+        key:'months9To12',
+        title:'9 - 12 Months',
+        v1:{
+            key:'months9To12-v1',
+            status:0,
+            name:'Typhoid Conjugate Vaccine',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+    },
+    months12:{
+        key:'months12',
+        title:'12 Months',
+        v1:{
+            key:'months12-v1',
+            status:0,
+            name:'Hepatitis A (Hep – A)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+    },
+    months15:{
+        key:'months15',
+        title:'15 Months',
+        v1:{
+            key:'months15-v1',
+            status:0,
+            name:'Measles, Mumps, and Rubella (MMR)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'2nd',
+        },
+        v2:{
+            key:'months15-v2',
+            status:0,
+            name:'Varicella',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+        v3:{
+            key:'months15-v3',
+            status:0,
+            name:'PCV booster',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+    },
+    months16To18:{
+        key:'months16To18',
+        title:'16 - 18 Months',
+        v1:{
+            key:'months16To18-v1',
+            status:0,
+            name:'Diphtheria, Perussis, and Tetanus (DTwP B/DTaP B)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+        v2:{
+            key:'months16To18-v2',
+            status:0,
+            name:'Inactivated polio vaccine (IPV B)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+        v3:{
+            key:'months16To18-v3',
+            status:0,
+            name:'Haemophilus influenzae type B (Hib B)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+    },
+    months18:{
+        key:'months18',
+        title:'18 Months',
+        v1:{
+            key:'months18-v1',
+            status:0,
+            name:'Hepatitis A (Hep – A)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'2nd',
+        },
+    },
+    years2:{
+        key:'years2',
+        title:'2 Years',
+        v1:{
+            key:'years2-v1',
+            status:0,
+            name:'Booster of Typhoid Conjugate Vaccine',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+    },
+    years4To6:{
+        key:'years4To6',
+        title:'4 - 6 Years',
+        v1:{
+            key:'years4To6-v1',
+            status:0,
+            name:'Diphtheria, Perussis, and Tetanus (DTwP B/DTaP B)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'2nd',
+        },
+        v2:{
+            key:'years4To6-v2',
+            status:0,
+            name:'Oral polio vaccine (OPV)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'3rd',
+        },
+        v3:{
+            key:'years4To6-v3',
+            status:0,
+            name:'Varicella',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'2nd',
+        },
+        v4:{
+            key:'years4To6-v4',
+            status:0,
+            name:'Measles, Mumps, and Rubella (MMR)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'3rd',
+        },
+    },
+    years10To12:{
+        key:'years10To12',
+        title:'10 - 12 Years',
+        v1:{
+            key:'years10To12-v1',
+            status:0,
+            name:'Tdap/Td)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+        v2:{
+            key:'years10To12-v2',
+            status:0,
+            name:'Human Papilloma Virus (HPV)',
+            dueOn:'due on date',
+            givenOn:'given on date',
+            dosage:'1st',
+        },
+    },
+}
+
+export function getVaccinationList(){
+    // console.log('iterate vaccination list ')
+    let vl = [];
+    let pKeys = Object.keys(vaccination)
+    for(i=0;i<pKeys.length;i++){
+        let cKeys = Object.keys(vaccination[pKeys[i]])
+        let d = [];
+        let t=vaccination[pKeys[i]].title;
+        // console.log('iterate vaccination list: paent title : '+t)
+        for(j=2;j<cKeys.length;j++){
+            let pk = pKeys[i];
+            let ck = cKeys[j];
+            // console.log('iterate vaccination list: parent key : '+pk)
+            // console.log('iterate vaccination list: child key : '+ck)
+            d.push(vaccination[pk][ck])
+            // console.log('iterate vaccination list: child key node : '+d[j-2].key)
+        }
+        vl.push({title:t,data:d})
+    }
+    return vl;
+}
+
+export function getVaccinationData(){
+    return (vaccination);
+}

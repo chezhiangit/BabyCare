@@ -31,6 +31,8 @@ class HomeComponent extends Component {
             case "DR":
             case "BR":
             case "VR":
+                this.props.loadVaccination();
+                break;
             default:
                 return;
         }

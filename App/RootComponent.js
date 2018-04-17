@@ -7,6 +7,7 @@ import HomeComponent from '../App/Home';
 import BabyCareTipsComponent from '../App/BabyCareTips'
 import BabyDevMilestoneComponent from '../App/BabyDevelopmentMilestone'
 import HeightWeightComponent from '../App/HeightWeightComponent'
+import VaccinationComponent from '../App/Vaccination'
 
 const ConnectedRouter = connect()(Router)
 const store = configureStore()
@@ -18,6 +19,7 @@ const Scenes = Actions.create(
       <Scene key='bcaretips' component = {BabyCareTipsComponent} />
       <Scene key='bdms' component ={BabyDevMilestoneComponent}/>
       <Scene key='heightWeight' component = {HeightWeightComponent} />
+      <Scene key='vaccine' component = {VaccinationComponent} />
     </Scene>
   )
 
