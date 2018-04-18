@@ -4,16 +4,33 @@ import {
     StyleSheet,
     Text,
     View,
-    SectionList
+    SectionList,
+    Alert
   } from 'react-native';
 import RowComponent from './RowComponent'
 
   class VaccinationComponent extends Component {
       constructor(props){
           super(props)
+          this.onListItemSelected = this.onListItemSelected.bind(this)
       }
 
-
+      onListItemSelected(item,index,section){
+            this.props.goToVaccination(index,section)
+        // Alert.alert(
+        //             'Alert',
+        //             'List item selected: '+item.key+' '+index+' ' +section.secIndex+' '+this.props.vaccination[section.secIndex].data[index].name,
+        //             [
+        //               {text: 'Continue', onPress: () => {
+        //                // this.setModalVisible(true)
+        //                   //this.props.handleListSelection()
+        //                   this.props.editVaccination(index,section)
+        //               }},
+        //               {text: 'Discard', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        //             ],
+        //             { cancelable: false }
+        //           )
+      }
       render(){
           return(
             <View>
@@ -22,11 +39,14 @@ import RowComponent from './RowComponent'
                 </View>
                 <SectionList
 
-                    sections={this.props.createVacinationList()}
+                    sections={this.props.vaccination}
 
-                    renderSectionHeader={ ({section}) => <Text style={styles.SectionHeaderStyle}> { section.title } </Text> }
+                    renderSectionHeader={ ({section}) => {
+                            return <Text style={styles.SectionHeaderStyle}> { section.title } </Text>
+                        } 
+                    }
 
-                    renderItem={ ({item}) => <RowComponent item={item} />}
+                    renderItem={ ({item,index,section}) => <RowComponent item={item} index={index} section={section} onSelect={this.onListItemSelected}/>}
 
                     keyExtractor={ (item, index) => item.key }
                     
@@ -50,7 +70,6 @@ import RowComponent from './RowComponent'
         justifyContent:'center',
     },
     titleTextStyle:{
-        fontStyle:'italic',
         fontFamily: 'Cochin',
         color: '#3e4444',
         fontWeight: 'bold',
@@ -63,7 +82,6 @@ import RowComponent from './RowComponent'
         fontSize : 20,
         padding: 5,
         color: '#fff',
-        fontStyle:'italic',
         fontFamily: 'Cochin',
       },
      

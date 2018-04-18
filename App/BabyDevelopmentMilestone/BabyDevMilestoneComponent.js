@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
         
        },
     item: {
-        fontStyle:'italic',
         fontFamily: 'Cochin',
         backgroundColor:'#f0f0f0',
         marginTop:10,
@@ -101,7 +100,6 @@ const styles = StyleSheet.create({
         elevation: 2,
        },
     titleTextStyle:{
-        fontStyle:'italic',
         fontFamily: 'Cochin',
         color: '#3e4444',
         fontWeight: 'bold',

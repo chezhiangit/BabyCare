@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
         flexDirection:'column'
     },
     titleTextStyle:{
-        fontStyle:'italic',
         fontFamily: 'Cochin',
         color: '#3e4444',
         fontWeight: 'bold',
@@ -77,7 +76,6 @@ const styles = StyleSheet.create({
         padding:10
     },
     toggleTextStyle:{
-        fontStyle:'italic',
         fontFamily: 'Cochin',
         color: '#DC143C',
         fontWeight: 'bold',

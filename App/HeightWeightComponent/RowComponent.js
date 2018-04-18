@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
         
     },
     textStyle :{
-        fontStyle:'italic',
         fontFamily: 'Cochin',
         fontSize: 18,
     }

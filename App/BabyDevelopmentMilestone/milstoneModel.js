@@ -77,7 +77,6 @@ import {
             justifyContent:'center',
         },
         titleTextStyle:{
-            fontStyle:'italic',
             fontFamily: 'Cochin',
             color: '#3e4444',
             fontWeight: 'bold',
@@ -90,7 +89,6 @@ import {
             fontSize : 20,
             padding: 5,
             color: '#fff',
-            fontStyle:'italic',
             fontFamily: 'Cochin',
           },
          
@@ -100,7 +98,6 @@ import {
             padding: 5,
             color: '#000',
             backgroundColor : '#F5F5F5',
-            fontStyle:'italic',
             fontFamily: 'Cochin',
          
           }

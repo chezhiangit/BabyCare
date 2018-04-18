@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
             alignItems: 'center',
        },
        titleTextStyle:{
-            fontStyle:'italic',
             fontFamily: 'Cochin',
             color: '#3e4444',
             fontWeight: 'bold',

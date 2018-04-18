@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
         borderRadius:50
     },
     textStyle :{
-        fontStyle:'italic',
         fontFamily: 'Cochin',
         fontSize: 18,
     }
