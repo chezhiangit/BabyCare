@@ -6,7 +6,10 @@ import {
     View,
     SectionList,
     DatePickerIOS,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    TextInput,
+    Button,
+    ScrollView
   } from 'react-native';
 
   import DatePickerModel from './DatepickerModal'
@@ -23,6 +26,7 @@ import {
               givenDate:data.givenOn,
               datepickerVisible:false,
               selecteDate:new Date(),
+              comments:'',
               onDateChange:function(){}
 
           }
@@ -33,13 +37,15 @@ import {
           this.setDueDate = this.setDueDate.bind(this)
           this.setGivenDate = this.setGivenDate.bind(this)
           this.onDatePickerClosed = this.onDatePickerClosed.bind(this)
+          this.onDone = this.onDone.bind(this)
+          this.showHideButton = this.showHideButton.bind(this)
       }
     renderDatepicker(){
         if(this.state.datepickerVisible==true){
             
             return(
                 Platform.select({
-                 ios: <View style={styles.datecontainer}>
+                 ios: <View>
                         <TouchableWithoutFeedback onPress={()=>{this.onDatePickerClosed()}}>
                             <View style={{alignItems:'flex-end'}}>
                                 <Text style={{fontSize:18,fontFamily: 'Cochin',color:'#3e4444'}}>Done</Text>
@@ -48,9 +54,11 @@ import {
                         <DatePickerIOS
                         date={this.state.selecteDate}
                         onDateChange={(date)=>this.state.onDateChange(date)}
+                        mode='date'
+                        locale='dd-mm-yyyy'
                         />
                     </View>,
-                android: <View style={styles.datecontainer}>
+                android: <View>
                         </View>
                 })
         )
@@ -61,7 +69,7 @@ import {
     onDatePickerClosed(){
         this.setState({datepickerVisible:false})
         let data = {
-            vaccination:this.props.vaccination,
+            //vaccination:[...this.props.vaccination],
             index:this.props.index,
             sectionIdex:this.props.section.secIndex,
             newDueDate:this.state.dueDate,
@@ -71,14 +79,14 @@ import {
     }
     setDueDate(newDate){
         this.setState({
-            dueDate:newDate,
+            dueDate:newDate.toLocaleDateString(),
             // datepickerVisible:false,
             selecteDate:newDate
         })
     }
     setGivenDate(newDate){
         this.setState({
-            givenDate:newDate,
+            givenDate:newDate.toLocaleDateString(),
             // datepickerVisible:false,
             selecteDate:newDate
         })
@@ -87,7 +95,7 @@ import {
         console.log('onSetDueDate')
         let currentDate = new Date()
         if(this.state.dueDate !=='Set due date'){
-            currentDate = this.state.dueDate
+            currentDate = new Date(this.state.dueDate)
         }
         this.setState({selecteDate:currentDate,onDateChange:this.setDueDate,datepickerVisible:true})
     }
@@ -95,15 +103,29 @@ import {
         console.log('onSetGivenDate')
         let currentDate = new Date()
         if(this.state.givenDate !=='Set given date'){
-            currentDate = this.state.givenDate
+            currentDate = new Date(this.state.givenDate)
         }
         this.setState({selecteDate:currentDate,onDateChange:this.setGivenDate,datepickerVisible:true})
+    }
+    onDone(){
+
+    }
+    showHideButton(){
+        if(!this.state.datepickerVisible){
+            return ( <View style={{marginTop:10,borderColor: '#6495ED',borderWidth: 1,borderRadius:10,width:'30%',marginLeft:'35%'}}>
+                        <Button title="Done" color="#6495ED" onPress={this.onDone}/>
+                    </View>
+            )
+        }
+        return null;
+        
     }
     render(){
           
           return(
-            //   <Text>Edit Vaccination {this.props.vaccination[this.props.section.secIndex].data[this.props.index].name}</Text>
+              
         <View style={{flex:1}}>
+        {/* <ScrollView style={{flex:1,flexDirection:'column'}}> */}
             <View style={styles.titleViewStyle}>
                     <Text style={styles.titleTextStyle}>{this.state.name}</Text>
             </View>
@@ -121,14 +143,21 @@ import {
                 <View style={styles.givenViewStyle}>
                         <Text style={styles.duegivenTextStyle}>Dosage: { this.state.dosage } Dose</Text>
                 </View>
+                <Text style={{marginTop:20,marginLeft:20,fontSize:18,fontFamily: 'Cochin',}}>Comments:(max 300 letters)</Text>
+                <View style={styles.commentsViewStyle}>
+                        <TextInput maxLength={300} multiline={true} numberOfLines={10} placeholder='Enter short comment.' value={this.state.comments} ></TextInput>
+                </View>
+                {
+                    this.showHideButton()
+                }
             </View>
+                
                 {
                     this.renderDatepicker()
                 }
-            {/* <View style={{flex:1,flexDirection: 'column',justifyContent: 'center'}}>
-                <DatePickerModel onDateChange={this.state.onDateChange} selecteDate={this.state.selecteDate} modalVisible={this.state.datepickerVisible}/>
-            </View> */}
+         {/* </ScrollView> */}
         </View>
+       
         )
       }
   }
@@ -165,9 +194,13 @@ import {
         fontSize:18,
         fontFamily: 'Cochin',
     },
-    // datecontainer: {
-    //     flex: 1,
-    //     justifyContent: 'center'
-    //   },
+    commentsViewStyle:{
+        marginRight:20,
+        marginLeft:20,
+        borderWidth:1,
+        backgroundColor : '#F5F5F5',
+        borderColor:'#CDDC39',
+        height:'40%'
+    }
   })
 export default EditVaccineComponent;

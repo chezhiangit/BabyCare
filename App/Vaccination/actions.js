@@ -18,9 +18,9 @@ export function goToVaccination(index,section) {
 
 export function updateVaccinationDates(data) {
     return (dispatch) =>{
-        data.vaccination[data.sectionIdex].data[data.index].dueOn = data.newDueDate
-        data.vaccination[data.sectionIdex].data[data.index].givenOn = data.newGivenDate
+     //   data.vaccination[data.sectionIdex].data[data.index].dueOn = data.newDueDate
+     //   data.vaccination[data.sectionIdex].data[data.index].givenOn = data.newGivenDate
 
-        dispatch({type:'UPDATE_VACCINATION',data:data.vaccination})
+        dispatch({type:'UPDATE_VACCINATION',data:data})
     }
 }

@@ -5,6 +5,9 @@ import bct from './babyCareTipsReducer'
 import bdms from './babyDevMilestoneReducer'
 import heightweight from './heightweightReducer'
 import vaccination from './vaccinationReducer'
+import babydetails from './babyDetailsReducer'
+import doctordetails from './doctorDetailsReducer'
+
 
 export default combineReducers({
    nav,
@@ -12,7 +15,9 @@ export default combineReducers({
    bct,
    bdms,
    heightweight,
-   vaccination
+   vaccination,
+   babydetails,
+   doctordetails
 })
 
 export const getNav = ({nav}) => nav
@@ -21,3 +26,6 @@ export const getBabyCareTips = ({bct}) => bct
 export const getBabyDevMilestone = ({bdms}) => bdms
 export const getHeightWeightChart = ({heightweight}) => heightweight
 export const getVaccination = ({vaccination}) => vaccination
+export const getBabyDetails = ({babydetails}) => babydetails
+export const getDoctorDetails = ({doctordetails}) => doctordetails
+

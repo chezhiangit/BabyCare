@@ -9,6 +9,8 @@ import BabyDevMilestoneComponent from '../App/BabyDevelopmentMilestone'
 import HeightWeightComponent from '../App/HeightWeightComponent'
 import VaccinationComponent from '../App/Vaccination'
 import {EditVaccineComp} from '../App/Vaccination'
+import BabyDetailsComponet from '../App/BabyDetails'
+import DoctorDetailsComponet from '../App/DoctorDetail'
 
 const ConnectedRouter = connect()(Router)
 const store = configureStore()
@@ -22,7 +24,8 @@ const Scenes = Actions.create(
       <Scene key='heightWeight' component = {HeightWeightComponent} />
       <Scene key='vaccine' component = {VaccinationComponent} />
       <Scene key='editvaccine' component = {EditVaccineComp} />
-
+      <Scene key='babydetails' component = {BabyDetailsComponet} />
+      <Scene key='doctordetails' component = {DoctorDetailsComponet} />
     </Scene>
   )
 

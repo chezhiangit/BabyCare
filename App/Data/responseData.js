@@ -465,7 +465,7 @@ export function getHeightWeightData() {
 }
 
 
-let vaccination = {
+const Response_vaccination = {
     birth:{
         key:'birth',
         title:'Birth',
@@ -841,25 +841,34 @@ let vaccination = {
 export function getVaccinationList(){
     // console.log('iterate vaccination list ')
     let vl = [];
-    let pKeys = Object.keys(vaccination)
+    let pKeys = Object.keys(Response_vaccination)
+    console.log('vaccination list: name : ',Response_vaccination.birth.v1)
+    // console.log(' vaccination list: due on: '+vaccination.birth.v1.dueOn)
+    // console.log(' vaccination list: given on : '+vaccination.birth.v1.givenOn)
+
+
     for(i=0;i<pKeys.length;i++){
-        let cKeys = Object.keys(vaccination[pKeys[i]])
+        let cKeys = Object.keys(Response_vaccination[pKeys[i]])
         let d = [];
-        let t=vaccination[pKeys[i]].title;
+        let t=Response_vaccination[pKeys[i]].title;
         // console.log('iterate vaccination list: paent title : '+t)
         for(j=2;j<cKeys.length;j++){
             let pk = pKeys[i];
             let ck = cKeys[j];
             // console.log('iterate vaccination list: parent key : '+pk)
             // console.log('iterate vaccination list: child key : '+ck)
-            d.push(vaccination[pk][ck])
+            d.push(Response_vaccination[pk][ck])
             // console.log('iterate vaccination list: child key node : '+d[j-2].key)
         }
         vl.push({title:t,data:d,secIndex:i})
     }
+    console.log('vaccination list: name : '+vl[0].data[0].name)
+    console.log(' vaccination list: due on: '+vl[0].data[0].dueOn)
+    console.log(' vaccination list: given on : '+vl[0].data[0].givenOn)
+
     return vl;
 }
 
-export function getVaccinationData(){
-    return (vaccination);
-}
+// export function getVaccinationData(){
+//     return (vaccination);
+// }

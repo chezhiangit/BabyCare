@@ -62,7 +62,7 @@ import {
 
 const styles = StyleSheet.create({
     contentContainer: {
-        // paddingVertical: 20
+        //  paddingVertical: 20
       },
     cotainer:{
         flex:1,

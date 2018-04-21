@@ -37,8 +37,49 @@ export function loadVaccination() {
     console.log('start to create vaccination list')
     return (dispatch) =>{
         let data = BabyCareModel.getVaccinationList()
+        // console.log('Data from vaccination : ' +data[0].data[0].name)
+        // console.log('Data from vaccination : ' +data[0].data[0].dueOn)
+        // console.log('Data from vaccination : ' +data[0].data[0].givenOn)
         Actions.vaccine({title:'Vaccination'})
         dispatch({type:'LOAD_VACCINATION',data})
     }
 }
 
+export function loadBabyDetails() {
+    console.log('dispatch action to load baby details')
+
+    return (dispatch) =>{
+        let data = [{
+            DOB:'',
+            placeOfBirth:'',
+            birthWeight:'',
+            lengthAtBirth:'',
+            bloodGroup:'',
+            identification:'',
+            remarks:''
+        }]
+        Actions.babydetails({title:'Baby Details'})
+        dispatch({type:'SAVE_BABYDETAILS',data})
+    }
+
+    
+}
+
+
+export function loadDoctorDetails() {
+    console.log('dispatch action to load doctor details')
+
+    return (dispatch) =>{
+        let data = [{
+            DOB:'',
+            placeOfBirth:'',
+            birthWeight:'',
+            lengthAtBirth:'',
+            bloodGroup:'',
+            identification:'',
+            remarks:''
+        }]
+        Actions.doctordetails({title:'Doctor Details'})
+        dispatch({type:'SAVE_DOCTORDETAILS',data})
+    }
+}
