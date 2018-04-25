@@ -12,9 +12,6 @@ import {
     ScrollView
   } from 'react-native';
 
-  import DatePickerModel from './DatepickerModal'
-
-
   class EditVaccineComponent extends Component{
       constructor(props){
           super(props)

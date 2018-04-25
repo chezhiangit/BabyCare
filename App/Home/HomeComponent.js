@@ -49,11 +49,11 @@ class HomeComponent extends Component {
                 <FlatList
                 data={[
                     {key: 'Doctor Record',id:'DR'},
-                    {key: 'Birth Record',id:'BR'},
-                    {key: 'Vacination Record',id:'VR'},
-                    {key: 'Development Milestone',id:'DM'},
+                    {key: 'Baby\'s Birth Record',id:'BR'},
+                    {key: 'Baby\'s Vacination Record',id:'VR'},
+                    {key: 'Baby\'s Development Milestone',id:'DM'},
                     {key: 'Baby Care Tips',id:'BCT'},
-                    {key: 'Height/Weight Chart',id:'HWC'},
+                    {key: 'Baby\'s Height/Weight Chart',id:'HWC'},
                 ]}
                 renderItem={({item}) => <TouchableWithoutFeedback onPress={(event)=>this.onListItemSelected(item)}>
                                             <View>

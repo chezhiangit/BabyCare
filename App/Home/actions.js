@@ -50,16 +50,52 @@ export function loadBabyDetails() {
 
     return (dispatch) =>{
         let data = [{
-            DOB:'',
-            placeOfBirth:'',
-            birthWeight:'',
-            lengthAtBirth:'',
-            bloodGroup:'',
-            identification:'',
-            remarks:''
-        }]
+            key:'1',
+            babyName:'Mane Shankar',
+            DOB:new Date(),
+            placeOfBirth:'Chennai',
+            birthWeight:'2.7kg',
+            lengthAtBirth:'40cm',
+            bloodGroup:'B+ve',
+            identification:'Mole on left thye',
+            remarks:'Having dust alergy'
+        },
+        {
+            key:'2',
+            babyName:'Kaaviyan',
+            DOB:new Date(),
+            placeOfBirth:'Bangalore',
+            birthWeight:'2.7kg',
+            lengthAtBirth:'40cm',
+            bloodGroup:'B+ve',
+            identification:'Mole on left thye',
+            remarks:'pre machured baby'
+        },
+        {
+            key:'3',
+            babyName:'Mane Shankar',
+            DOB:new Date(),
+            placeOfBirth:'Chennai',
+            birthWeight:'2.7kg',
+            lengthAtBirth:'40cm',
+            bloodGroup:'B+ve',
+            identification:'Mole on left thye',
+            remarks:'Having dust alergy'
+        },
+        {
+            key:'4',
+            babyName:'Kaaviyan',
+            DOB:new Date(),
+            placeOfBirth:'Bangalore',
+            birthWeight:'2.7kg',
+            lengthAtBirth:'40cm',
+            bloodGroup:'B+ve',
+            identification:'Mole on left thye',
+            remarks:'pre machured baby'
+        }
+    ]
         Actions.babydetails({title:'Baby Details'})
-        dispatch({type:'SAVE_BABYDETAILS',data})
+        dispatch({type:'LOAD_BABYDETAILS',data})
     }
 
     

@@ -33,7 +33,7 @@ import RowComponent from './RowComponent'
       }
       render(){
           return(
-            <View>
+            <View style={StyleSheet.absoluteFill}>
                 <View style={styles.titleViewStyle}>
                     <Text style={styles.titleTextStyle}>Vaccination Record</Text>
                 </View>

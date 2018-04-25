@@ -36,7 +36,7 @@ import {
         }
 
         return(
-                <View>
+                <View style={StyleSheet.absoluteFill}>
                     <View style={{alignItems: 'center'}}>
                         <Text style={styles.titleTextStyle}>Average height & weight of {this.state.gender==1?'BOYS':'GIRLS'} at different ages</Text>
                     </View>
@@ -45,8 +45,9 @@ import {
                             <Text style={styles.toggleTextStyle}>Tap on here for {this.state.gender==0?'BOYS':'GIRLS'}</Text>
                         </View>
                     </TouchableWithoutFeedback>
+                    <HeaderComponent />
                     <ScrollView contentContainerStyle={styles.contentContainer}>
-                        <HeaderComponent />
+                        
                         {
                             data.map((item) =>{
                                 return <RowComponent key={item.key} chartData={item}/>
