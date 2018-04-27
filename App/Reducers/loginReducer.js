@@ -1,18 +1,18 @@
 const DEFAULT_STATE = {login: false}
 
-export default (state = DEFAULT_STATE, {type, payload})=> {
-  console.log('login reducer : Action type: '+type)
+export default (state = DEFAULT_STATE, action)=> {
+  console.log('login reducer : Action type: '+action.type)
 
-  switch(type) {
+  switch(action.type) {
     case 'LOGIN_SUCCESS':
       return {
         ...state,
-        login: true,
+        login: action.data.login,
       }
     case 'LOGOUT_SUCCESS' :
       return {
         ...state,
-        login: false,
+        login: action.data.login,
       }
     default:
       return state

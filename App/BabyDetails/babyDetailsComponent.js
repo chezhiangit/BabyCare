@@ -65,7 +65,7 @@ import {
                     {
                         this.renderRow()
                     }
-                <TouchableOpacity activeOpacity={0.5} onPress={() =>this.onAddEditDelete(this.props.babyDetails.length,addItem,1)} style={styles.TouchableOpacityStyle} >
+                <TouchableOpacity activeOpacity={0.5} onPress={() =>this.onAddEditDelete(-1,addItem,1)} style={styles.TouchableOpacityStyle} >
                      <Image source={floating_image} style={styles.FloatingButtonStyle} />
                 </TouchableOpacity>    
             </View>

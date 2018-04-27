@@ -1,5 +1,5 @@
 import BabyDetailsComponent from './babyDetailsComponent'
-import AddEditDeleteBabyDetailsComponent from './addEditDeleteBabyDetails'
+import AddEditBabyDetailsComponent from './addEditBabyDetails'
 import * as actions from './actions';
 import * as loginActions from '../Login/actions'
 import {connect} from 'react-redux'
@@ -19,4 +19,4 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BabyDetailsComponent)
-export const AddEditDeleteBabyDetails = connect(mapStateToProps, mapDispatchToProps)(AddEditDeleteBabyDetailsComponent)
+export const AddEditBabyDetails = connect(mapStateToProps, mapDispatchToProps)(AddEditBabyDetailsComponent)

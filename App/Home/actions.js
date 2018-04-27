@@ -25,21 +25,10 @@ export function loadHeightWeight() {
     }
 }
 
-// export function loadVaccination(){
-//     return (dispatch) =>{
-//         let data = BabyCareModel.getVaccinationData();
-//         Actions.vaccine({title:'Vaccination'})
-//         dispatch({type:'LOAD_VACCINATION',data})
-//     }
-// }
-
 export function loadVaccination() {
     console.log('start to create vaccination list')
     return (dispatch) =>{
         let data = BabyCareModel.getVaccinationList()
-        // console.log('Data from vaccination : ' +data[0].data[0].name)
-        // console.log('Data from vaccination : ' +data[0].data[0].dueOn)
-        // console.log('Data from vaccination : ' +data[0].data[0].givenOn)
         Actions.vaccine({title:'Vaccination'})
         dispatch({type:'LOAD_VACCINATION',data})
     }
@@ -107,15 +96,47 @@ export function loadDoctorDetails() {
 
     return (dispatch) =>{
         let data = [{
-            DOB:'',
-            placeOfBirth:'',
-            birthWeight:'',
-            lengthAtBirth:'',
-            bloodGroup:'',
-            identification:'',
-            remarks:''
-        }]
+            key:'1',
+            username:'',
+            DrName:'Sudeep Kumar',
+            NOH:'Nalam Clinic',
+            mobile:'9585058087',
+            location:'Chromepet',
+            street:'EVR Colony',
+            remarks:'Child Specialist'
+        },
+        {
+            key:'2',
+            username:'',
+            DrName:'Suresh Kumar',
+            NOH:'Nalam Clinic',
+            mobile:'9585058087',
+            location:'Chromepet',
+            street:'EVR Colony',
+            remarks:'Child Specialist'
+        },
+        {
+            key:'3',
+            username:'',
+            DrName:'SasiKumar',
+            NOH:'Nalam Clinic',
+            mobile:'9585058087',
+            location:'Chromepet',
+            street:'EVR Colony',
+            remarks:'Child Specialist'
+        },
+        {
+            key:'4',
+            username:'',
+            DrName:'SarathKumar',
+            NOH:'Nalam Clinic',
+            mobile:'9585058087',
+            location:'Chromepet',
+            street:'EVR Colony',
+            remarks:'Child Specialist'
+        }
+    ]
         Actions.doctordetails({title:'Doctor Details'})
-        dispatch({type:'SAVE_DOCTORDETAILS',data})
+        dispatch({type:'LOAD_DOCTORDETAILS',data})
     }
 }

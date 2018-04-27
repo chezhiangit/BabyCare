@@ -10,8 +10,11 @@ import HeightWeightComponent from '../App/HeightWeightComponent'
 import VaccinationComponent from '../App/Vaccination'
 import {EditVaccineComp} from '../App/Vaccination'
 import BabyDetailsComponet from '../App/BabyDetails'
+import {AddEditBabyDetails} from '../App/BabyDetails'
 import DoctorDetailsComponet from '../App/DoctorDetail'
-import {AddEditDeleteBabyDetails} from '../App/BabyDetails'
+import {AddEditDoctorDetails} from '../App/DoctorDetail'
+import {NewUserComp} from '../App/Login'
+import {ForgotPwdComp} from '../App/Login'
 
 const ConnectedRouter = connect()(Router)
 const store = configureStore()
@@ -26,8 +29,13 @@ const Scenes = Actions.create(
       <Scene key='vaccine' component = {VaccinationComponent} />
       <Scene key='editvaccine' component = {EditVaccineComp} />
       <Scene key='babydetails' component = {BabyDetailsComponet} />
-      <Scene key='addeditdeleteBabyDetails' component = {AddEditDeleteBabyDetails} />
+      <Scene key='addeditBabyDetails' component = {AddEditBabyDetails} />
       <Scene key='doctordetails' component = {DoctorDetailsComponet} />
+      <Scene key='addeditDoctorDetails' component = {AddEditDoctorDetails} />
+      <Scene key='newuser' component = {NewUserComp} />
+      <Scene key='forgotpwd' component = {ForgotPwdComp} />
+
+
     </Scene>
   )
 

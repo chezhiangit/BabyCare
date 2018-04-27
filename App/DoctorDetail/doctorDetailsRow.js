@@ -12,7 +12,7 @@ import {
   } from 'react-native';
 
 
-  class BabyDetailsRowComponent extends Component {
+  class DoctorDetailsRowComponent extends Component {
       constructor(props){
           super(props)
       }
@@ -20,45 +20,38 @@ import {
           return(
             <View  style={styles.item}>
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-                    <TouchableWithoutFeedback onPress={(event)=>this.props.onAddEditDelete(this.props.index,this.props.babyRec,3)}>
+                    <TouchableWithoutFeedback onPress={(event)=>this.props.onAddEditDelete(this.props.index,this.props.doctorRec,3)}>
                         <View>
                             <Text style={styles.editTextStyle}>Delete</Text>
                         </View>
                     </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={(event)=>this.props.onAddEditDelete(this.props.index,this.props.babyRec,2)}>
+                    <TouchableWithoutFeedback onPress={(event)=>this.props.onAddEditDelete(this.props.index,this.props.doctorRec,2)}>
                         <View>
                             <Text style={styles.editTextStyle}>Edit</Text>
                         </View>
                     </TouchableWithoutFeedback>
                 </View>
-                <View style={styles.babyNameViewStyle}>
-                    <Text style={styles.babyNameTextStyle}>{this.props.babyRec.babyName}</Text>
+                <View style={styles.doctorNameViewStyle}>
+                    <Text style={styles.doctorNameTextStyle}>{this.props.doctorRec.DrName}</Text>
                 </View>
                 <View style={styles.secondaryViewStyle}>
                     <View style={styles.dobViewStyle}>
-                        <Text style={styles.secondaryRowTitleStyle}>DOB:</Text> <Text style={styles.secondaryRowTextStyle}> { this.props.babyRec.DOB.toLocaleDateString()}</Text>
-                    </View>
-                    <View style={styles.pobViewStyle}>
-                        <Text style={styles.secondaryRowTitleStyle}>Blood Group:</Text> <Text style={styles.secondaryRowTextStyle}> { this.props.babyRec.bloodGroup }</Text>
-
+                        <Text style={styles.secondaryRowTitleStyle}>Hospital:</Text> <Text style={styles.secondaryRowTextStyle}> { this.props.doctorRec.NOH}</Text>
                     </View>
                 </View>
                 <View style={styles.secondaryViewStyle}>
                     <View style={styles.dobViewStyle}>
-                        <Text style={styles.secondaryRowTitleStyle}>W on B:</Text> <Text style={styles.secondaryRowTextStyle}> { this.props.babyRec.birthWeight }</Text>
-                    </View>
-                    <View style={styles.pobViewStyle}>
-                        <Text style={styles.secondaryRowTitleStyle}>L on B:</Text> <Text style={styles.secondaryRowTextStyle}> { this.props.babyRec.lengthAtBirth }</Text>
+                        <Text style={styles.secondaryRowTitleStyle}>Mobile:</Text> <Text style={styles.secondaryRowTextStyle}> { this.props.doctorRec.mobile }</Text>
                     </View>
                 </View>
                 <View style={styles.bottomRowStyle}>
-                    <Text style={styles.secondaryRowTitleStyle}>POB:</Text> <Text style={styles.secondaryRowTextStyle}> { this.props.babyRec.placeOfBirth }</Text>
+                    <Text style={styles.secondaryRowTitleStyle}>Location:</Text> <Text style={styles.secondaryRowTextStyle}> { this.props.doctorRec.location }</Text>
                 </View>
                 <View style={styles.bottomRowStyle}>
-                    <Text style={styles.secondaryRowTitleStyle}>Identification:</Text> <Text style={styles.secondaryRowTextStyle}> { this.props.babyRec.identification }</Text>
+                    <Text style={styles.secondaryRowTitleStyle}>Street:</Text> <Text style={styles.secondaryRowTextStyle}> { this.props.doctorRec.street }</Text>
                 </View>
                 <View style={styles.bottomRowStyle}>
-                    <Text style={styles.secondaryRowTitleStyle}>Remarks:</Text> <Text style={styles.secondaryRowTextStyle}> { this.props.babyRec.remarks }</Text>
+                    <Text style={styles.secondaryRowTitleStyle}>Remarks:</Text> <Text style={styles.secondaryRowTextStyle}> { this.props.doctorRec.remarks }</Text>
                 </View>
             </View>
           )
@@ -67,13 +60,13 @@ import {
 
 
     const styles = StyleSheet.create({
-        babyNameViewStyle:{
+        doctorNameViewStyle:{
             flex:1,
             flexDirection:'row',
             justifyContent: 'center',  
             alignItems:'center'  
         },
-        babyNameTextStyle:{
+        doctorNameTextStyle:{
             marginBottom:20,
             fontSize: 20,
             fontFamily: 'Cochin-Bold',
@@ -133,4 +126,4 @@ import {
         
     })
 
-    export default BabyDetailsRowComponent;
+    export default DoctorDetailsRowComponent;

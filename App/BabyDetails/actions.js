@@ -5,7 +5,7 @@ export function addEditDeleteBabyDetails(index,item,operation){
         switch(operation){
             case 1:
             case 2:
-                Actions.addeditdeleteBabyDetails({title:'Baby Details',index:index,babyRec:item,operation:operation})
+                Actions.addeditBabyDetails({title:'Baby Details',index:index,babyRec:item,operation:operation})
             break;
             case 3:
                 dispatch({type:'DELETE_BABYDETAILS',data:{index,item,operation}})

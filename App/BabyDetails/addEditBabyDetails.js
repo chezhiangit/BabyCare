@@ -10,7 +10,7 @@ import {
     TouchableWithoutFeedback
   } from 'react-native';
 
-  class AddEditDeleteBabyDetailsComponent extends Component {
+  class AddEditBabyDetailsComponent extends Component {
       constructor(props){
           super(props)
           this.state = {
@@ -82,9 +82,10 @@ import {
     }
     onSave(){
       //  console.log('baby details to be saved : ',this.state.babyRec)
+      if(this.state.babyName.length <= 0) return;
       let data={
             username:'',
-            key:''+(this.props.index+1),
+            key:this.state.babyName,
             babyName:this.state.babyName,
             DOB:this.state.DOB,
             placeOfBirth:this.state.placeOfBirth,
@@ -212,4 +213,4 @@ import {
     
 })
 
-  export default AddEditDeleteBabyDetailsComponent;
+  export default AddEditBabyDetailsComponent;

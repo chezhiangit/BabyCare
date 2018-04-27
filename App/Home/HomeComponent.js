@@ -42,8 +42,10 @@ class HomeComponent extends Component {
         }
 
     }
+    componentWillMount(){
+        this.props.validateLogin(this.props.login);
+    }
     render(){
-       this.props.validateLogin(this.props.login);
         return(
             <View style={styles.container}>
                 <FlatList
@@ -76,10 +78,11 @@ const styles = StyleSheet.create({
         
        },
        item: {
-        backgroundColor:'#6495ED',
+        backgroundColor:'#EE82EE',
         margin:20,
         padding: 10,
         fontSize: 18,
+        color:'#FFFAFA',
         height: 44,
         borderWidth: 2,
         borderColor: '#F8F8FF',
