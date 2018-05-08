@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {Actions} from 'react-native-router-flux'
+
 import {
     Platform,
     StyleSheet,
@@ -51,6 +53,7 @@ import {
                 remarks:this.state.remarks
             }
       this.props.saveDoctorDetails(this.props.index,data,this.props.operation)
+      Actions.pop()
     }
    
       render(){ 

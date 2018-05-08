@@ -14,6 +14,11 @@ export default (state = DEFAULT_STATE, action)=> {
         ...state,
         login: action.data.login,
       }
+    case 'ADD_USER' :
+      return {
+        ...state,
+        userData:action.data.user
+      }
     default:
       return state
   }

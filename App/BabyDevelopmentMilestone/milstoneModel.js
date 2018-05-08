@@ -54,8 +54,9 @@ import {
                             keyExtractor={ (item, index) => index }
                             
                             />
-
+                        <View style={{marginTop:20,borderColor: '#6495ED',borderWidth: 0.5,borderRadius:10,width:'30%',marginLeft:'35%'}}>
                         <Button title="Close" color="#6495ED" onPress={this.onClose}/> 
+                        </View>
                     </View>
                 </View>
             </Modal>

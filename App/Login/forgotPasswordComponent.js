@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {Actions} from 'react-native-router-flux'
+
 import {
     Platform,
     StyleSheet,
@@ -40,7 +42,7 @@ class ForgotPWDComponent extends Component {
                  ios: <View>
                         <TouchableWithoutFeedback onPress={()=>{this.onDatePickerClosed()}}>
                             <View style={{alignItems:'flex-end',paddingTop:10}}>
-                                <Text style={{fontSize:18,fontFamily: 'Cochin',color:'#3e4444'}}>Done</Text>
+                                <Text style={{fontSize:18,fontFamily: 'Cochin',color:'#3e4444'}}>Hide</Text>
                             </View>
                         </TouchableWithoutFeedback>
                         <DatePickerIOS
@@ -57,16 +59,79 @@ class ForgotPWDComponent extends Component {
         }
         return null
     }
+    successCallback(){
+        Alert.alert(
+                'Confirmation.\n',
+                'Password Reset Successfully.',
+                [
+                  {text: 'Continue', onPress: () => {
+                    Actions.pop()
+                   // this.setModalVisible(true)
+                      //this.props.handleListSelection()
+                  }},
+                //   {text: 'Discard', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                ],
+                { cancelable: false }
+              )
+    }
+
+    errorCallback(){
+        Alert.alert(
+            'Error\n',
+            'Invalid User Name or Password.\n\n\r No space allowed.\n\r Password Should have:\r\rOne lower case lettr (a-z).'+
+            '\r One Uppper case letter (A-Z).\r One numberic (0-9).\r One special character (!@#$%^&*).',
+            [
+              {text: 'Continue', onPress: () => {
+               // Actions.pop()
+               // this.setModalVisible(true)
+                  //this.props.handleListSelection()
+              }},
+            //   {text: 'Discard', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            ],
+            { cancelable: false }
+          )
+    }
+
+    onMismatch(title,msg){
+        Alert.alert(
+            title+'\n',
+            msg+'\n\r Pls try again!',
+            [
+              {text: 'Continue', onPress: () => {
+               // this.setModalVisible(true)
+                  //this.props.handleListSelection()
+              }},
+            //   {text: 'Discard', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            ],
+            { cancelable: false }
+          )
+    }
     onReset(){
-        //validate user and password
-        //compare password and confirm password.
+       //compare new password and confirm password
+       if(this.state.username.length===0){
+            this.onMismatch('Error','User Name should not be Empty')
+            return;
+        }else if(this.state.password.length===0){
+            this.onMismatch('Error','Password should not be Empty')
+            return;
+        }else if(this.state.confirmPassword.length===0){
+            this.onMismatch('Error','Confirm Password should not be Empty')
+            return;
+        }else if(this.state.password.localeCompare(this.state.confirmPassword) !== 0){
+            this.onMismatch('Error','Given Password and Confirm Password are not matching.');
+            return;
+        }
         let user = {
             username:this.state.username,
             password:this.state.password,
             DOB:this.state.DOB,
             hint:this.state.hint,
         }
-        this.props.resetPassword(user);
+        let Callback = {
+            onError:this.errorCallback,
+            onSuccess:this.successCallback
+        }
+        this.props.resetPassword(user,Callback);
     }
 
     onDateSelected(){

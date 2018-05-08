@@ -27,11 +27,37 @@ class LoginComponent extends Component {
 
         this.onSignOn = this.onSignOn.bind(this)
         this.renderHint = this.renderHint.bind(this)
+        this.onMismatch = this.onMismatch.bind(this)
+    }
+    onMismatch(title,msg){
+        Alert.alert(
+            title+'\n',
+            msg+'\n\r Pls try again!',
+            [
+              {text: 'Continue', onPress: () => {
+               // this.setModalVisible(true)
+                  //this.props.handleListSelection()
+              }},
+            //   {text: 'Discard', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            ],
+            { cancelable: false }
+          )
     }
 
-
     onSignOn(){
-        this.props.loginSuccess();
+        if(this.state.username.length===0){
+            this.onMismatch('Error','User Name should not be Empty')
+            return;
+        }else if(this.state.password.length===0){
+            this.onMismatch('Error','Password should not be Empty')
+            return;
+        }
+        let data={
+            username:this.state.username,
+            password:this.state.password,
+            hint:this.state.hint
+        }
+        this.props.login(data);
     }
 
     renderHint(){
@@ -52,11 +78,11 @@ class LoginComponent extends Component {
                     <Text style ={styles.LoginLabel}> User Login</Text>
                 </View>
                 <View>
-                    <TextInput style={styles.TextInputStyle} value = {this.state.username} placeholder="Enter User name">
+                    <TextInput style={styles.TextInputStyle} value = {this.state.username} onChangeText={(text) => this.setState({username:text})} placeholder="Enter User name">
                     </TextInput> 
                 </View>
                 <View>
-                    <TextInput style={styles.TextInputStyle} value={this.state.password} secureTextEntry={true} placeholder="Enter Password" />
+                    <TextInput style={styles.TextInputStyle} value={this.state.password} onChangeText={(text) => this.setState({password:text})} secureTextEntry={true} placeholder="Enter Password" />
                 </View>
                 <View style={{margin:20,borderColor: '#6495ED',borderWidth: 1,borderRadius:20}}>
                     <Button title="Sign On" color="#6495ED" accessibilityLabel="Sign On with credentials" onPress={this.onSignOn}/>

@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {Actions} from 'react-native-router-flux'
+
 import {
     Platform,
     StyleSheet,
@@ -33,16 +35,18 @@ class NewUserComponent extends Component {
         this.onDateSelected = this.onDateSelected.bind(this)
         this.successCallback = this.successCallback.bind(this)
         this.errorCallback = this.errorCallback.bind(this)
+        this.onMismatch = this.onMismatch.bind(this)
     }
 
-    successCallback(){
+    successCallback(title,msg){
         Alert.alert(
-                'Alert',
-                'User Created Successfully.',
+                title,
+                msg,
                 [
                   {text: 'Continue', onPress: () => {
                    // this.setModalVisible(true)
                       //this.props.handleListSelection()
+                      Actions.pop()
                   }},
                 //   {text: 'Discard', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
                 ],
@@ -50,10 +54,10 @@ class NewUserComponent extends Component {
               )
     }
 
-    errorCallback(){
+    errorCallback(title,msg){
         Alert.alert(
-            'Alert',
-            'User Creation Failed.',
+            title,
+            msg,
             [
               {text: 'Continue', onPress: () => {
                // this.setModalVisible(true)
@@ -73,7 +77,7 @@ class NewUserComponent extends Component {
                  ios: <View>
                         <TouchableWithoutFeedback onPress={()=>{this.onDatePickerClosed()}}>
                             <View style={{alignItems:'flex-end',paddingTop:10}}>
-                                <Text style={{fontSize:18,fontFamily: 'Cochin',color:'#3e4444'}}>Done</Text>
+                                <Text style={{fontSize:18,fontFamily: 'Cochin',color:'#3e4444'}}>Hide</Text>
                             </View>
                         </TouchableWithoutFeedback>
                         <DatePickerIOS
@@ -90,9 +94,35 @@ class NewUserComponent extends Component {
         }
         return null
     }
+    onMismatch(title,msg){
+        Alert.alert(
+            title+'\n',
+            msg+'\n\r Pls try again!',
+            [
+              {text: 'Continue', onPress: () => {
+               // this.setModalVisible(true)
+                  //this.props.handleListSelection()
+              }},
+            //   {text: 'Discard', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            ],
+            { cancelable: false }
+          )
+    }
     onCreate(){
-        //validate user name and password.
         //compare new password and confirm password
+        if(this.state.username.length===0){
+            this.onMismatch('Error','User Name should not be Empty')
+            return;
+        }else if(this.state.password.length===0){
+            this.onMismatch('Error','Password should not be Empty')
+            return;
+        }else if(this.state.confirmPassword.length===0){
+            this.onMismatch('Error','Confirm Password should not be Empty')
+            return;
+        }else if(this.state.password.localeCompare(this.state.confirmPassword) !== 0){
+            this.onMismatch('Error','Given Password and Confirm Password are not matching.');
+            return;
+        }
 
         let user = {
             username:this.state.username,

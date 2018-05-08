@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {Actions} from 'react-native-router-flux'
+
 import {
     Platform,
     StyleSheet,
@@ -45,7 +47,7 @@ import {
                  ios: <View>
                         <TouchableWithoutFeedback onPress={()=>{this.onDatePickerClosed()}}>
                             <View style={{alignItems:'flex-end'}}>
-                                <Text style={{fontSize:18,fontFamily: 'Cochin',color:'#3e4444'}}>Done</Text>
+                                <Text style={{fontSize:18,fontFamily: 'Cochin',color:'#3e4444'}}>Hide</Text>
                             </View>
                         </TouchableWithoutFeedback>
                         <DatePickerIOS
@@ -105,7 +107,7 @@ import {
         this.setState({selecteDate:currentDate,onDateChange:this.setGivenDate,datepickerVisible:true})
     }
     onDone(){
-
+        Actions.pop()
     }
     showHideButton(){
         if(!this.state.datepickerVisible){
