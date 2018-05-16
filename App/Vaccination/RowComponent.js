@@ -38,10 +38,10 @@ import {
                     </View>
                     <View style={styles.duegivenViewStyle}>
                         <View style={styles.dueViewStyle}>
-                            <Text style={styles.duegivenTextStyle}>Due On:</Text> <Text style={styles.duegivenTextStyle}> { this.props.item.dueOn.toString() }</Text>
+                            <Text style={styles.duegivenTextStyle}>Due On:</Text> <Text style={styles.duegivenTextStyle}> { this.props.item.dueOn.toLocaleDateString() }</Text>
                         </View>
                         <View style={styles.givenViewStyle}>
-                            <Text style={styles.duegivenTextStyle}>Given On:</Text> <Text style={styles.duegivenTextStyle}> { this.props.item.givenOn.toString() }</Text>
+                            <Text style={styles.duegivenTextStyle}>Given On:</Text> <Text style={styles.duegivenTextStyle}> { this.props.item.givenOn.toLocaleDateString() }</Text>
                         </View>
                     </View>
                     <View style={{paddingTop:5,paddingBottom:5}}>

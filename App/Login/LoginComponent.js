@@ -28,6 +28,38 @@ class LoginComponent extends Component {
         this.onSignOn = this.onSignOn.bind(this)
         this.renderHint = this.renderHint.bind(this)
         this.onMismatch = this.onMismatch.bind(this)
+        this.successCallback = this.successCallback.bind(this)
+        this.errorCallback = this.errorCallback.bind(this)
+    }
+    successCallback(title,msg){
+        Alert.alert(
+                title,
+                msg,
+                [
+                  {text: 'Continue', onPress: () => {
+                   // this.setModalVisible(true)
+                      //this.props.handleListSelection()
+                      Actions.pop()
+                  }},
+                //   {text: 'Discard', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                ],
+                { cancelable: false }
+              )
+    }
+
+    errorCallback(title,msg){
+        Alert.alert(
+            title,
+            msg,
+            [
+              {text: 'Continue', onPress: () => {
+               // this.setModalVisible(true)
+                  //this.props.handleListSelection()
+              }},
+            //   {text: 'Discard', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            ],
+            { cancelable: false }
+          )
     }
     onMismatch(title,msg){
         Alert.alert(
@@ -57,7 +89,11 @@ class LoginComponent extends Component {
             password:this.state.password,
             hint:this.state.hint
         }
-        this.props.login(data);
+        let Callback = {
+            onError:this.errorCallback,
+            onSuccess:this.successCallback
+        }
+        this.props.login(data,Callback);
     }
 
     renderHint(){

@@ -9,7 +9,8 @@ import {
     View,
     Button,
     DatePickerIOS,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    Alert
   } from 'react-native';
 
   class AddEditBabyDetailsComponent extends Component {
@@ -20,7 +21,7 @@ import {
             datepickerVisible:false,
             selecteDate:this.props.babyRec.DOB,
             
-            username:'',
+            username:this.props.username,
             key:this.props.babyRec.key,
             babyName:this.props.babyRec.babyName,
             DOB:this.props.babyRec.DOB,
@@ -37,7 +38,34 @@ import {
           this.setDOBDate = this.setDOBDate.bind(this)
           this.showHideButton = this.showHideButton.bind(this)
           this.onSave = this.onSave.bind(this)
+          this.successCallback = this.successCallback.bind(this)
+          this.errorCallback = this.errorCallback.bind(this)
       }
+      successCallback(title,msg){
+        Alert.alert(
+                title,
+                msg,
+                [
+                  {text: 'Continue', onPress: () => {
+                      Actions.pop()
+                  }},
+                ],
+                { cancelable: false }
+              )
+    }
+
+    errorCallback(title,msg){
+        Alert.alert(
+            title,
+            msg,
+            [
+              {text: 'Continue', onPress: () => {
+               
+              }},
+            ],
+            { cancelable: false }
+          )
+    }
       renderDatepicker(){
         if(this.state.datepickerVisible==true){
             
@@ -85,9 +113,10 @@ import {
     onSave(){
       //  console.log('baby details to be saved : ',this.state.babyRec)
       if(this.state.babyName.length <= 0) return;
+      let d = new Date()
       let data={
-            username:'',
-            key:this.state.babyName,
+            username:this.props.username,
+            key:this.state.key===''?(''+d.getUTCDate()+d.getTime()):this.state.key,
             babyName:this.state.babyName,
             DOB:this.state.DOB,
             placeOfBirth:this.state.placeOfBirth,
@@ -97,8 +126,12 @@ import {
             identification:this.state.identification,
             remarks:this.state.remarks
         }
-      this.props.saveBabyDetails(this.props.index,data,this.props.operation)
-      Actions.pop()
+        let Callback = {
+            onError:this.errorCallback,
+            onSuccess:this.successCallback
+        }
+      this.props.saveBabyDetails(this.props.index,data,this.props.operation,Callback)
+     // Actions.pop()
     }
     onSetDOBDate(){
         this.setState({datepickerVisible:true})

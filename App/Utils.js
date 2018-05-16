@@ -11,3 +11,6 @@ export const validateUserName = (user)=>{
     console.log('User Name: '+user)
     return (!spaceRegx.test(user))
 }
+export const getKey = ()=>{
+    var RandomNumber = Math.floor(Math.random() * 100) + 1 ;
+}

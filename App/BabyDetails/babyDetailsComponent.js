@@ -37,9 +37,9 @@ import {
           }
           this.onAddEditDelete = this.onAddEditDelete.bind(this);
       }
-    onAddEditDelete(index,item,operation){
+    onAddEditDelete(index,item,operation,Callback){
         this.setState({operation:operation,selectedIndex:index})
-        this.props.addEditDeleteBabyDetails(index,item,operation)
+        this.props.addEditDeleteBabyDetails(index,item,operation,Callback)
     }
     renderRow(){
             return <FlatList

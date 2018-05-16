@@ -20,25 +20,25 @@ switch(action.type) {
       ...state,
       doctorDetails:action.data
     }
-  case 'ADD_DOCTORDETAILS':
-    return {
-      ...state,
-      doctorDetails:[...state.doctorDetails,action.data.item]
-    }
-    case 'UPDATE_DOCTORDETAILS':
-    const updatelist = [...state.doctorDetails];
-    updatelist[action.data.index]=action.data.item
-    return {
-      ...state,
-      doctorDetails:updatelist
-    }
-    case 'DELETE_DOCTORDETAILS':
-      const doctorlist = [...state.doctorDetails];
-      doctorlist.splice(action.data.index, 1);
-    return {
-      ...state,
-      doctorDetails:doctorlist
-    }
+  // case 'ADD_DOCTORDETAILS':
+  //   return {
+  //     ...state,
+  //     doctorDetails:[...state.doctorDetails,action.data.item]
+  //   }
+  //   case 'UPDATE_DOCTORDETAILS':
+  //   const updatelist = [...state.doctorDetails];
+  //   updatelist[action.data.index]=action.data.item
+  //   return {
+  //     ...state,
+  //     doctorDetails:updatelist
+  //   }
+  //   case 'DELETE_DOCTORDETAILS':
+  //     const doctorlist = [...state.doctorDetails];
+  //     doctorlist.splice(action.data.index, 1);
+  //   return {
+  //     ...state,
+  //     doctorDetails:doctorlist
+  //   }
   default:
     return state
 }

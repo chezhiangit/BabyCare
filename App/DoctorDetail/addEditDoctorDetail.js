@@ -9,7 +9,8 @@ import {
     View,
     Button,
     DatePickerIOS,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    Alert
   } from 'react-native';
 
   class AddEditDoctorDetailsComponent extends Component {
@@ -18,9 +19,8 @@ import {
           this.state = {
             title:this.props.operation===1?'Add Doctor Details':'Edit Doctor Details',
 
-            username:'',
+            username:this.props.username,
             key:this.props.doctorRec.key,
-            username:'',
             DrName:this.props.doctorRec.DrName,
             NOH:this.props.doctorRec.NOH,
             mobile:this.props.doctorRec.mobile,
@@ -30,9 +30,37 @@ import {
 
           }
 
-          this.showButton = this.showButton.bind(this)
-          this.onSave = this.onSave.bind(this)
+        this.showButton = this.showButton.bind(this)
+        this.onSave = this.onSave.bind(this)
+        this.successCallback = this.successCallback.bind(this)
+        this.errorCallback = this.errorCallback.bind(this)
       }
+
+    successCallback(title,msg){
+        Alert.alert(
+                title,
+                msg,
+                [
+                  {text: 'Continue', onPress: () => {
+                      Actions.pop()
+                  }},
+                ],
+                { cancelable: false }
+              )
+    }
+
+    errorCallback(title,msg){
+        Alert.alert(
+            title,
+            msg,
+            [
+              {text: 'Continue', onPress: () => {
+               
+              }},
+            ],
+            { cancelable: false }
+          )
+    }
     showButton(){
             return ( <View style={{marginTop:10,borderColor: '#6495ED',borderWidth: 0.5,borderRadius:10,width:'30%',marginLeft:'35%'}}>
                         <Button title="Save" color="#6495ED" onPress={this.onSave}/>
@@ -41,10 +69,10 @@ import {
     }
     onSave(){
         if(this.state.DrName <= 0) return;
+        let d = new Date();
         let data={
-                username:'',
-                key:this.state.key,
-                username:'',
+                username:this.props.username,
+                key:this.state.key===''?''+d.getUTCDate()+d.getTime():this.state.key,
                 DrName:this.state.DrName,
                 NOH:this.state.NOH,
                 mobile:this.state.mobile,
@@ -52,8 +80,12 @@ import {
                 street:this.state.street,
                 remarks:this.state.remarks
             }
-      this.props.saveDoctorDetails(this.props.index,data,this.props.operation)
-      Actions.pop()
+        let Callback = {
+            onError:this.errorCallback,
+            onSuccess:this.successCallback
+        }
+      this.props.saveDoctorDetails(this.props.index,data,this.props.operation,Callback)
+    //   Actions.pop()
     }
    
       render(){ 
@@ -68,7 +100,7 @@ import {
                 </View>
                 <View style={styles.secondaryViewStyle}>
                     <Text style={styles.secondaryRowTitleStyle}>Name of Hospital:</Text> 
-                    <Text style={styles.secondaryRowTextStyle}> { this.state.NOH }</Text>
+                    <TextInput style={styles.secondaryRowTextStyle} onChangeText={(text) => this.setState({NOH:text})} value={this.state.NOH} placeholder="Enter Name of the clinic/Hospital"/>
                 </View>
                 <View style={styles.secondaryViewStyle}>
                     <Text style={styles.secondaryRowTitleStyle}>Mobile Number:</Text>

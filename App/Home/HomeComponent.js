@@ -29,13 +29,13 @@ class HomeComponent extends Component {
                 this.props.loadHeightWeight();
                 break;
             case "DR":
-                this.props.loadDoctorDetails();
+                this.props.loadDoctorDetails(this.props.username);
                 break;
             case "BR":
-                this.props.loadBabyDetails();
+                this.props.loadBabyDetails(this.props.username);
                 break;
             case "VR":
-                this.props.loadVaccination();
+                this.props.loadVaccination(this.props.username);
                 break;
             default:
                 return;

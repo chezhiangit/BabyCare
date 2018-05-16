@@ -44,6 +44,7 @@ export function forgotPassword(data){
             if(userInfo!==null && userInfo.length>0){
                 realmDB.write(()=>{
                     userInfo[0].password = data.password
+                   // userInfo[0].DOB = data.DOB
                 })
                 return true
             }

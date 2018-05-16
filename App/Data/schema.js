@@ -53,9 +53,9 @@ export const VaccinesSchema = {
 export const VaccineListSchema = {
     name:'VaccineList',
     properties:{
-        key:'string',
+        secIndex:'int',
         title:'string',
-        vaccines:'Vaccines[]'
+        data:'Vaccines[]'
     }
 }
 export const VaccinationSchema = {
@@ -64,7 +64,6 @@ export const VaccinationSchema = {
     properties:{
         username:'string',
         babyId:'string',
-        key:'string',
         vaccinesdata:'VaccineList[]'
     }
 }

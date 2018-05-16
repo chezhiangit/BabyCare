@@ -8,18 +8,20 @@ export const logout = ()=>{
         dispatch({type: 'LOGOUT_SUCCESS',data:{login:false}})
     }
   }
-export const login = (data)=>{
+export const login = (data,Callback)=>{
     return (dispatch) => {
         let userInfo = loginModel.validateUser(data)
         if(userInfo!==null && userInfo.length>0){
             console.log('Number of User info fetched from BD:- ',userInfo.length)
             if(userInfo[0].password.localeCompare(data.password)===0){
-                dispatch({type:'LOGIN_SUCCESS',data:{login:true}})
+                dispatch({type:'LOGIN_SUCCESS',data:{username:userInfo[0].username,login:true}})
                 Actions.home({title: 'Home Page'})
             } else {
+                Callback.onError('Error','\r\nPassword not matching. \r\nPls try with valid password.')
                 console.log('Password doesn\'t match')
             }
         }else {
+            Callback.onError('Error','\r\nUser not found. \r\nPls try with valid user.')
             console.log('User not found in DB')
         }
         
@@ -62,7 +64,7 @@ export function saveNewUser(user,Callback) {
                 let title='Confirmation'
                 let msg = 'User created successfully.'
                 Callback.onSuccess(title,msg);
-                dispatch({type:'ADD_USER',data:{user:user}})
+               // dispatch({type:'ADD_USER',data:{user:user}})
             }else{
                 console.log('Store User name & Password in DB Failed: ')
                 let title = 'Error\n'
@@ -87,7 +89,7 @@ export function resetPassword(user,Callback){
         if(Utils.validatePassword(user.password) && Utils.validateUserName(user.username)) {
             if(loginModel.forgotPassword(user)===true){
                 Callback.onSuccess();
-                dispatch({type:'RESET_PASSWORD',data:{user:user}})
+               // dispatch({type:'RESET_PASSWORD',data:{user:user}})
                 return;    
             } else {
                 Callback.onError()

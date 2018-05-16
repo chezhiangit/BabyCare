@@ -5,37 +5,59 @@ import {
     Text,
     View,
     SectionList,
-    Alert
+    Alert,
+    TouchableWithoutFeedback
   } from 'react-native';
 import RowComponent from './RowComponent'
 
   class VaccinationComponent extends Component {
       constructor(props){
           super(props)
+          this.state = {
+              babyIndex:0,
+              babyCount:this.props.babylist.length,
+          }
           this.onListItemSelected = this.onListItemSelected.bind(this)
+          this.onPrevious = this.onPrevious.bind(this)
+          this.onNext = this.onNext.bind(this)
+      }
+      componentDidMount(){
+          this.props.getVaccinationList(this.props.username,this.props.babylist[0].babyId)
       }
 
       onListItemSelected(item,index,section){
             this.props.goToVaccination(index,section)
-        // Alert.alert(
-        //             'Alert',
-        //             'List item selected: '+item.key+' '+index+' ' +section.secIndex+' '+this.props.vaccination[section.secIndex].data[index].name,
-        //             [
-        //               {text: 'Continue', onPress: () => {
-        //                // this.setModalVisible(true)
-        //                   //this.props.handleListSelection()
-        //                   this.props.editVaccination(index,section)
-        //               }},
-        //               {text: 'Discard', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-        //             ],
-        //             { cancelable: false }
-        //           )
+      }
+      onPrevious(){
+          if (this.state.babyIndex>0) {
+          this.setState({
+            babyIndex:this.state.babyIndex-1
+          })
+          this.props.getVaccinationList(this.props.username,this.props.babylist[this.state.babyIndex].babyId)
+        }
+      }
+      onNext(){
+          if(this.state.babyIndex<this.state.babyCount-1){
+          this.setState({
+              babyIndex:this.state.babyIndex+1
+          })
+          this.props.getVaccinationList(this.props.username,this.props.babylist[this.state.babyIndex].babyId)
+        }
       }
       render(){
           return(
-            <View style={StyleSheet.absoluteFill}>
+              //absoluteFill is to make the list scroll till bottom of the list
+            <View style={StyleSheet.absoluteFill}> 
                 <View style={styles.titleViewStyle}>
-                    <Text style={styles.titleTextStyle}>Vaccination Record</Text>
+                    <TouchableWithoutFeedback onPress={()=>{this.onPrevious()}}>
+                        <View style={styles.TriangleShapeLeft}></View>
+                    </TouchableWithoutFeedback>
+                        <View style={{marginTop:20,marginBottom:20,width:'70%',alignItems:'center',justifyContent:'center',}}>
+                                <Text style={styles.titleTextStyle}>Vaccination Record for {this.props.babylist[this.state.babyIndex].babyName}</Text>
+                        </View>
+                    <TouchableWithoutFeedback onPress={()=>{this.onNext()}}>
+                        <View style={styles.TriangleShapeRight}></View>
+                    </TouchableWithoutFeedback>
                 </View>
                 <SectionList
 
@@ -74,7 +96,6 @@ import RowComponent from './RowComponent'
         color: '#3e4444',
         fontWeight: 'bold',
         fontSize: 20,
-        padding:20
     },
     SectionHeaderStyle:{
 
@@ -84,6 +105,46 @@ import RowComponent from './RowComponent'
         color: '#fff',
         fontFamily: 'Cochin',
       },
+
+    TriangleShapeRight: {
+        justifyContent:'flex-end',
+        marginTop:20,
+        marginBottom:20,
+        width: 0,
+        height: 0,
+        borderLeftWidth: 40,
+        borderTopWidth: 20,
+        borderBottomWidth: 20,
+        borderStyle: 'solid',
+        backgroundColor: 'transparent',
+        borderLeftColor: '#00BCD4',
+        borderTopColor: 'transparent',
+        borderBottomColor: 'transparent',
+        // shadowColor: '#00BCD4',
+        shadowOffset: { width: 10, height: 10 },
+        shadowOpacity: 0.5,
+        shadowRadius: 4,
+        elevation: 2,
+      },
+      TriangleShapeLeft: {
+        justifyContent:'flex-start',
+        marginTop:20,
+        marginBottom:20,
+        width: 0,
+        height: 0,
+        borderRightWidth: 40,
+        borderTopWidth: 20,
+        borderBottomWidth: 20,
+        borderStyle: 'solid',
+        backgroundColor: 'transparent',
+        borderRightColor: '#00BCD4',
+        borderTopColor: 'transparent',
+        borderBottomColor: 'transparent',
+        shadowOffset: { width: 0, height: 10 },
+        shadowOpacity: 0.5,
+        shadowRadius: 4,
+        elevation: 2,
+      }
      
     //   SectionListItemStyle:{
      

@@ -15,17 +15,50 @@ import {
   class BabyDetailsRowComponent extends Component {
       constructor(props){
           super(props)
+        
+        this.successCallback = this.successCallback.bind(this)
+        this.errorCallback = this.errorCallback.bind(this)
       }
-      render(){
+
+    successCallback(title,msg){
+        Alert.alert(
+                title,
+                msg,
+                [
+                    {text: 'Continue', onPress: () => {
+                        //Actions.pop()
+                    }},
+                ],
+                { cancelable: false }
+                )
+    }
+    errorCallback(title,msg){
+        Alert.alert(
+            title,
+            msg,
+            [
+              {text: 'Continue', onPress: () => {
+               
+              }},
+            ],
+            { cancelable: false }
+          )
+    }
+    render(){
+        
+            let Callback = {
+                onSuccess : this.successCallback,
+                onError : this.errorCallback
+            }
           return(
             <View  style={styles.item}>
                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-                    <TouchableWithoutFeedback onPress={(event)=>this.props.onAddEditDelete(this.props.index,this.props.babyRec,3)}>
+                    <TouchableWithoutFeedback onPress={(event)=>this.props.onAddEditDelete(this.props.index,this.props.babyRec,3,Callback)}>
                         <View>
                             <Text style={styles.editTextStyle}>Delete</Text>
                         </View>
                     </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback onPress={(event)=>this.props.onAddEditDelete(this.props.index,this.props.babyRec,2)}>
+                    <TouchableWithoutFeedback onPress={(event)=>this.props.onAddEditDelete(this.props.index,this.props.babyRec,2,Callback)}>
                         <View>
                             <Text style={styles.editTextStyle}>Edit</Text>
                         </View>

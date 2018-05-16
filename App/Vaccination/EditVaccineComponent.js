@@ -11,7 +11,8 @@ import {
     TouchableWithoutFeedback,
     TextInput,
     Button,
-    ScrollView
+    ScrollView,
+    Alert
   } from 'react-native';
 
   class EditVaccineComponent extends Component{
@@ -21,8 +22,8 @@ import {
           this.state = {
               name:data.name,
               dosage:data.dosage,
-              dueDate:data.dueOn,
-              givenDate:data.givenOn,
+              dueDate:data.dueOn.toLocaleDateString(),
+              givenDate:data.givenOn.toLocaleDateString(),
               datepickerVisible:false,
               selecteDate:new Date(),
               comments:'',
@@ -38,7 +39,34 @@ import {
           this.onDatePickerClosed = this.onDatePickerClosed.bind(this)
           this.onDone = this.onDone.bind(this)
           this.showHideButton = this.showHideButton.bind(this)
+          this.successCallback = this.successCallback.bind(this)
+          this.errorCallback = this.errorCallback.bind(this)
       }
+    successCallback(title,msg){
+        Alert.alert(
+                title,
+                msg,
+                [
+                  {text: 'Continue', onPress: () => {
+                      Actions.pop()
+                  }},
+                ],
+                { cancelable: false }
+              )
+    }
+
+    errorCallback(title,msg){
+        Alert.alert(
+            title,
+            msg,
+            [
+              {text: 'Continue', onPress: () => {
+               
+              }},
+            ],
+            { cancelable: false }
+          )
+    }
     renderDatepicker(){
         if(this.state.datepickerVisible==true){
             
@@ -67,26 +95,16 @@ import {
 
     onDatePickerClosed(){
         this.setState({datepickerVisible:false})
-        let data = {
-            //vaccination:[...this.props.vaccination],
-            index:this.props.index,
-            sectionIdex:this.props.section.secIndex,
-            newDueDate:this.state.dueDate,
-            newGivenDate:this.state.givenDate
-        }
-        this.props.updateVaccinationDates(data)
     }
     setDueDate(newDate){
         this.setState({
             dueDate:newDate.toLocaleDateString(),
-            // datepickerVisible:false,
             selecteDate:newDate
         })
     }
     setGivenDate(newDate){
         this.setState({
             givenDate:newDate.toLocaleDateString(),
-            // datepickerVisible:false,
             selecteDate:newDate
         })
     }
@@ -107,7 +125,20 @@ import {
         this.setState({selecteDate:currentDate,onDateChange:this.setGivenDate,datepickerVisible:true})
     }
     onDone(){
-        Actions.pop()
+        let data = {
+            index:this.props.index,
+            sectionIdex:this.props.section.secIndex,
+            newDueDate:this.state.dueDate,
+            newGivenDate:this.state.givenDate,
+            comments:this.state.comments,
+            selectedBabyId:this.props.selectedBabyId,
+            username:this.props.username
+        }
+        const Callback = {
+            onSuccess :this.successCallback,
+            onError : this.errorCallback
+        }
+        this.props.updateVaccinationDates(data,Callback)
     }
     showHideButton(){
         if(!this.state.datepickerVisible){
