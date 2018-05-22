@@ -48,6 +48,7 @@ export const VaccinesSchema = {
         dueOn:'date',
         givenOn:'date',
         dosage:'string',
+        comments:'string'
     }
 }
 export const VaccineListSchema = {

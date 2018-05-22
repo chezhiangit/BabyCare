@@ -46,51 +46,6 @@ export function loadBabyDetails(username) {
     console.log('dispatch action to load baby details')
 
     return (dispatch) =>{
-    //     let data = [{
-    //         key:'1',
-    //         babyName:'Mane Shankar',
-    //         DOB:new Date(),
-    //         placeOfBirth:'Chennai',
-    //         birthWeight:'2.7kg',
-    //         lengthAtBirth:'40cm',
-    //         bloodGroup:'B+ve',
-    //         identification:'Mole on left thye',
-    //         remarks:'Having dust alergy'
-    //     },
-    //     {
-    //         key:'2',
-    //         babyName:'Kaaviyan',
-    //         DOB:new Date(),
-    //         placeOfBirth:'Bangalore',
-    //         birthWeight:'2.7kg',
-    //         lengthAtBirth:'40cm',
-    //         bloodGroup:'B+ve',
-    //         identification:'Mole on left thye',
-    //         remarks:'pre machured baby'
-    //     },
-    //     {
-    //         key:'3',
-    //         babyName:'Mane Shankar',
-    //         DOB:new Date(),
-    //         placeOfBirth:'Chennai',
-    //         birthWeight:'2.7kg',
-    //         lengthAtBirth:'40cm',
-    //         bloodGroup:'B+ve',
-    //         identification:'Mole on left thye',
-    //         remarks:'Having dust alergy'
-    //     },
-    //     {
-    //         key:'4',
-    //         babyName:'Kaaviyan',
-    //         DOB:new Date(),
-    //         placeOfBirth:'Bangalore',
-    //         birthWeight:'2.7kg',
-    //         lengthAtBirth:'40cm',
-    //         bloodGroup:'B+ve',
-    //         identification:'Mole on left thye',
-    //         remarks:'pre machured baby'
-    //     }
-    // ]
         console.log('User name : -',username)
         let babys = babyModel.loadBaby(username)
         if(babys!=null){

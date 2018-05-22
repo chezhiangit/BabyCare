@@ -46,9 +46,11 @@ export function getVaccinationList(username,babyId){
             if(username == null || babyId == null) return;
 
             let vaccineData = vaccinationModel.loadVaccination(username,babyId)
+          //  console.log('Vaccination data to be set to Store', vaccineData)
             if(vaccineData==null){
                 vaccineData=[]
             }
+            // console.log('Vaccination data to be set to Store', vaccineData)
             dispatch({type:'LOAD_VACCINATION',data:{vaccineData,selectedBabyId:babyId}})
         }
 }

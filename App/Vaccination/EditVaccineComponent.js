@@ -26,7 +26,7 @@ import {
               givenDate:data.givenOn.toLocaleDateString(),
               datepickerVisible:false,
               selecteDate:new Date(),
-              comments:'',
+              comments:data.comments,
               onDateChange:function(){}
 
           }
@@ -134,7 +134,7 @@ import {
             selectedBabyId:this.props.selectedBabyId,
             username:this.props.username
         }
-        const Callback = {
+        let Callback = {
             onSuccess :this.successCallback,
             onError : this.errorCallback
         }
@@ -175,7 +175,7 @@ import {
                 </View>
                 <Text style={{marginTop:20,marginLeft:20,fontSize:18,fontFamily: 'Cochin',}}>Comments:(max 300 letters)</Text>
                 <View style={styles.commentsViewStyle}>
-                        <TextInput maxLength={300} multiline={true} numberOfLines={10} placeholder='Enter short comment.' value={this.state.comments} ></TextInput>
+                        <TextInput maxLength={300} multiline={true} numberOfLines={10} placeholder='Enter short comment.' onChangeText={(text) => this.setState({comments:text})} value={this.state.comments} ></TextInput>
                 </View>
                 {
                     this.showHideButton()

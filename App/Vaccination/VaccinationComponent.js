@@ -10,6 +10,8 @@ import {
   } from 'react-native';
 import RowComponent from './RowComponent'
 
+let i = 0;
+
   class VaccinationComponent extends Component {
       constructor(props){
           super(props)
@@ -22,26 +24,33 @@ import RowComponent from './RowComponent'
           this.onNext = this.onNext.bind(this)
       }
       componentDidMount(){
-          this.props.getVaccinationList(this.props.username,this.props.babylist[0].babyId)
+          console.log('Selected baby Id : - ',this.props.babylist[i].babyId)
+          this.props.getVaccinationList(this.props.username,this.props.babylist[i].babyId)
       }
 
       onListItemSelected(item,index,section){
             this.props.goToVaccination(index,section)
       }
       onPrevious(){
-          if (this.state.babyIndex>0) {
-          this.setState({
-            babyIndex:this.state.babyIndex-1
-          })
-          this.props.getVaccinationList(this.props.username,this.props.babylist[this.state.babyIndex].babyId)
+        console.log('Selected baby onPrevious')
+          if (i>0) {
+        //   this.setState({
+        //     babyIndex:this.state.babyIndex-1
+        //   })
+        i = i-1
+          console.log('Selected baby onPrevious Id : - ',this.props.babylist[i].babyId)
+          this.props.getVaccinationList(this.props.username,this.props.babylist[i].babyId)
         }
       }
       onNext(){
-          if(this.state.babyIndex<this.state.babyCount-1){
-          this.setState({
-              babyIndex:this.state.babyIndex+1
-          })
-          this.props.getVaccinationList(this.props.username,this.props.babylist[this.state.babyIndex].babyId)
+        console.log('Selected baby onNext')
+          if(i<(this.state.babyCount-1)){
+        //   this.setState({
+        //       babyIndex:this.state.babyIndex+1
+        //   })
+        i = i+1
+          console.log('Selected baby onNext Id : - ',this.props.babylist[i].babyId)
+          this.props.getVaccinationList(this.props.username,this.props.babylist[i].babyId)
         }
       }
       render(){
@@ -53,7 +62,7 @@ import RowComponent from './RowComponent'
                         <View style={styles.TriangleShapeLeft}></View>
                     </TouchableWithoutFeedback>
                         <View style={{marginTop:20,marginBottom:20,width:'70%',alignItems:'center',justifyContent:'center',}}>
-                                <Text style={styles.titleTextStyle}>Vaccination Record for {this.props.babylist[this.state.babyIndex].babyName}</Text>
+                                <Text style={styles.titleTextStyle}>Vaccination Record for {this.props.babylist[i].babyName}</Text>
                         </View>
                     <TouchableWithoutFeedback onPress={()=>{this.onNext()}}>
                         <View style={styles.TriangleShapeRight}></View>

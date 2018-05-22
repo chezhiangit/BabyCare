@@ -12,7 +12,7 @@ const DEFAULT_STATE = [{
 }]
 
 export default (state = DEFAULT_STATE, action)=> {
-  console.log('doctor details reducer : Action type: '+action.type)
+  // console.log('doctor details reducer : Action type: '+action.type)
 switch(action.type) {
   
   case 'LOAD_DOCTORDETAILS':

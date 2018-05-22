@@ -1,13 +1,14 @@
 const DEFAULT_STATE = {vaccination:[]}
 
 export default (state = DEFAULT_STATE, action)=> {
-    console.log('vaccination record reducer : Action type: '+action.type)
+    // console.log('vaccination record reducer : Action type: '+action.type)
   switch(action.type) {
     case 'LOAD_BABYLIST':
       return {
         ...state,
-        vaccination:[...action.data.vaccineData],
-        babylist:[...action.data.babylist]
+        vaccination:[],
+        babylist:[...action.data.babylist],
+        selectedBabyId:''
         //vaccination:action.data
       }  
     case 'LOAD_VACCINATION':
