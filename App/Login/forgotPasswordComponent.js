@@ -146,9 +146,9 @@ class ForgotPWDComponent extends Component {
     }
     showHideCreateButton(){
         if(!this.state.datepickerVisible){
-            return <View style={{flexDirection:'row',justifyContent:'center',margin:20,borderColor: '#6495ED',borderWidth:1,borderRadius:20}}>
-            <Button title="Reset" color="#6495ED" onPress={()=>this.onReset()}/>
-        </View>
+            return  <View style={{margin:20,borderColor: '#6495ED',borderWidth:1,borderRadius:20}}>
+                        <Button title="Reset" color="#6495ED" onPress={()=>this.onReset()}/>
+                    </View>
         }
         return null
     }
@@ -174,7 +174,8 @@ class ForgotPWDComponent extends Component {
                 <View style={{flexDirection:'row',justifyContent:'flex-start',margin:20}}>
                 <TouchableWithoutFeedback onPress={(event)=>this.onDateSelected()}>
                     <View style={{flexDirection:'row',justifyContent:'center'}}>
-                        <Text style={styles.labelStyle}>Date of Birth:</Text> <Text>{this.state.DOB.toLocaleDateString()}</Text>
+                        <Text style={styles.labelStyle}>Date of Birth:</Text> 
+                        <Text>{this.state.DOB.toLocaleDateString()}</Text>
                     </View>
                 </TouchableWithoutFeedback>
                 </View>

@@ -10,7 +10,8 @@ import {
     Button,
     DatePickerIOS,
     TouchableWithoutFeedback,
-    Alert
+    Alert,
+    ScrollView
   } from 'react-native';
 
   class AddEditDoctorDetailsComponent extends Component {
@@ -90,6 +91,7 @@ import {
    
       render(){ 
           return(
+            <ScrollView contentContainerStyle={styles.contentContainer}>
             <View style={{flex:1,justifyContent: 'center',}}>
                 <View style={{flexDirection:'row',justifyContent:'center'}}>
                         <Text style={styles.titleTextStyle}>{this.state.title}</Text>
@@ -123,6 +125,7 @@ import {
                     this.showButton()
                 }
             </View>
+            </ScrollView>
           )
       }
   }

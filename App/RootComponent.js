@@ -21,7 +21,10 @@ const store = configureStore()
 
 const Scenes = Actions.create(
     <Scene key='root'>
+      
       <Scene key='login' component = {LoginComponent} title='Sign On'/>
+      {/* <Scene key='home' renderBackButton={()=>(null)} renderLeftButton ={()=>(null)} component = {HomeComponent}/> */}
+
       <Scene key='home' component = {HomeComponent}/>
       <Scene key='bcaretips' component = {BabyCareTipsComponent} />
       <Scene key='bdms' component ={BabyDevMilestoneComponent}/>

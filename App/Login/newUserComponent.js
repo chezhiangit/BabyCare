@@ -178,7 +178,8 @@ class NewUserComponent extends Component {
                 <View style={{flexDirection:'row',justifyContent:'flex-start',margin:20}}>
                 <TouchableWithoutFeedback onPress={(event)=>this.onDateSelected()}>
                     <View style={{flexDirection:'row',justifyContent:'center'}}>
-                        <Text style={styles.labelStyle}>Date of Birth:</Text> <Text>{this.state.DOB.toLocaleDateString()}</Text>
+                        <Text style={styles.labelStyle}>Date of Birth:</Text> 
+                        <Text>{this.state.DOB.toLocaleDateString()}</Text>
                     </View>
                 </TouchableWithoutFeedback>
                 </View>
